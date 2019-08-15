@@ -1,28 +1,28 @@
-# Masked InputText for React Native
+# Masked InputText for React
 [![Build Status](https://travis-ci.org/ProdutorAgro/react-native-masked-input-text.svg?branch=master)](https://travis-ci.org/ProdutorAgro/react-native-masked-input-text)
 [![Coverage Status](https://coveralls.io/repos/github/ProdutorAgro/react-native-masked-input-text/badge.svg?branch=master)](https://coveralls.io/github/ProdutorAgro/react-native-masked-input-text?branch=master)
-[![npm version](https://img.shields.io/npm/v/react-native-masked-input-text.svg)](https://www.npmjs.com/package/react-native-masked-input-text)
+[![npm version](https://img.shields.io/npm/v/react-masked-input-text.svg)](https://www.npmjs.com/package/react-native-masked-input-text)
 ## Install
 NPM
 ```
-npm install react-native-masked-input-text 
+npm install react-masked-input-text 
 ```
 
 Yarn
 ```
-yarn add react-native-masked-input-text
+yarn add react-masked-input-text
 ```
 
 ## Usage
 
 ```tsx
-import MaskedInput from 'react-native-masked-input-text'
+import MaskedInput from 'react-masked-input-text'
 
 render() {
     return (
-        <View>
+        <div>
             <MaskedInput mask={'xXas\\00?'} placeholder={'xXas00'} />
-        </View>
+        </div>
     )
 }
 ```
