@@ -49,9 +49,9 @@ export default class MaskedInput extends Component<IMaskedInputProps, IMaskedInp
 		let {mask, value, onTextChange, ...attributes} = this.props;
 		return (
 			<input
+				{...attributes}
 				value={this.state.value}
-				onChange={(event) => this.onTextChange(event.target.value)}
-				{...attributes}/>
+				onChange={(event) => this.onTextChange(event.target.value)}/>
 		);
 	}
 }
