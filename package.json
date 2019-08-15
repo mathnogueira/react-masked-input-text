@@ -2,7 +2,7 @@
   "name": "react-masked-input-text",
   "version": "1.0.12",
   "description": "A typescript masked InputText for react",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:mathnogueira/react-masked-input-text.git",
   "author": "Matheus Nogueira <matheus.nogueira@produtoragro.com.br>",
   "license": "MIT",
