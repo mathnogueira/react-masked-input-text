@@ -3,8 +3,10 @@ var __rest = (this && this.__rest) || function (s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 };
 define("internals/types", ["require", "exports"], function (require, exports) {
@@ -326,14 +328,14 @@ define("internals/inputProcessor", ["require", "exports", "internals/maskTokeniz
         return (match && match[0] === currentChar);
     }
 });
-define("index", ["require", "exports", "react", "react", "react-native", "internals/inputProcessor"], function (require, exports, React, react_1, react_native_1, inputProcessor_1) {
+define("index", ["require", "exports", "react", "react", "internals/inputProcessor"], function (require, exports, React, react_1, inputProcessor_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class MaskedInput extends react_1.Component {
         constructor(props) {
             super(props);
             this.onTextChange = this.onTextChange.bind(this);
-            this.state = { value: props.value || "" };
+            this.state = { value: props.value || '' };
             this.userInputProcessorFunction = inputProcessor_1.createInputProcessor(props.mask);
         }
         onTextChange(text) {
@@ -341,7 +343,7 @@ define("index", ["require", "exports", "react", "react", "react-native", "intern
         }
         componentWillReceiveProps(nextProps, nextContext) {
             this.userInputProcessorFunction = inputProcessor_1.createInputProcessor(nextProps.mask);
-            this.updateMaskedValue(nextProps.value || "");
+            this.updateMaskedValue(nextProps.value || '');
         }
         updateMaskedValue(inputValue) {
             const maskResult = this.userInputProcessorFunction(inputValue, inputProcessor_1.UserInputType.INSERTION);
@@ -354,7 +356,7 @@ define("index", ["require", "exports", "react", "react", "react-native", "intern
         }
         render() {
             let _a = this.props, { mask, value, onTextChange } = _a, attributes = __rest(_a, ["mask", "value", "onTextChange"]);
-            return (React.createElement(react_native_1.TextInput, Object.assign({ value: this.state.value, onChangeText: (text) => this.onTextChange(text) }, attributes)));
+            return (React.createElement("input", Object.assign({ value: this.state.value, onChange: (event) => this.onTextChange(event.target.value) }, attributes)));
         }
     }
     exports.default = MaskedInput;
